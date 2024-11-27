@@ -7,9 +7,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "build": "npm run generate-html && vite build",
-    "generate-html": "mkdir -p dist && cp index.html dist/"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "@titaniumnetwork-dev/ultraviolet": "^2.0.0",
