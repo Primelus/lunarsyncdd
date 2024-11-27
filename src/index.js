@@ -3,26 +3,27 @@ const express = require("express");
 const { createServer } = require("node:http");
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { hostname } = require("node:os");
+const path = require("path");
 
 const bare = createBareServer("/bare/");
 const app = express();
 
-app.use(express.static("./public"));
-app.use("/uv/", express.static(uvPath));
+// Ensure the public folder is properly referenced
+const publicPath = path.join(__dirname, "..", "public"); // Assuming 'public' is at the root level
 
-// Error for everything else
+app.use(express.static(publicPath)); // Serve static files from 'public' directory
+app.use("/uv/", express.static(uvPath)); // Serve static files from UV path
+
+// Serve custom 404 page
 app.get('*', function (req, res) {
-  res.send('404');
-  res.sendFile(join("../public", "404.html"));
+  res.status(404).sendFile(path.join(publicPath, "404.html")); // Correct path for 404.html
 });
 
-const server = createServer();
-
-server.on("request", (req, res) => {
+const server = createServer((req, res) => {
   if (bare.shouldRoute(req)) {
     bare.routeRequest(req, res);
   } else {
-    app(req, res);
+    app(req, res); // Pass the request to Express if it's not for Bare
   }
 });
 
@@ -34,15 +35,13 @@ server.on("upgrade", (req, socket, head) => {
   }
 });
 
-let port = parseInt(process.env.PORT || "");
-
-if (isNaN(port)) port = 8080;
+let port = parseInt(process.env.PORT || "8080"); // Default to 8080 if no PORT environment variable is set
+if (isNaN(port)) port = 8080; // Fallback to 8080 if the port is invalid
 
 server.on("listening", () => {
   const address = server.address();
 
-  // by default we are listening on 0.0.0.0 (every interface)
-  // we just need to list a few
+  // Log server addresses
   console.log("Listening on:");
   console.log(`\thttp://localhost:${address.port}`);
   console.log(`\thttp://${hostname()}:${address.port}`);
@@ -52,17 +51,19 @@ server.on("listening", () => {
   );
 });
 
-// https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html
+// Graceful shutdown
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
 
 function shutdown() {
   console.log("SIGTERM signal received: closing HTTP server");
-  server.close();
-  bare.close();
-  process.exit(0);
+  server.close(() => {
+    bare.close(); // Close Bare server cleanly
+    console.log("Server shut down gracefully.");
+    process.exit(0); // Exit the process
+  });
 }
 
 server.listen({
-  port,
+  port, // Start server on the specified port
 });
