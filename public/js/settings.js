@@ -11,7 +11,7 @@ if (tab) {
 }
 
 var settingsDefaultTab = {
-  title: "Lunarsync",
+  title: "DW",
   icon: "/favicon.png",
 };
 

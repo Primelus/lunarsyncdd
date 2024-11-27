@@ -2,28 +2,28 @@
 <kbd>
 <img style="border-radius:50%" height="150px" src="./public/assets/favicon.png">
 </kbd>
-<h1 align="center">Lunarsync</h1>
+<h1 align="center">DW</h1>
 <p align="center">The best place to evade internet censorship with <b>200+</b> games and a ultrafast proxy. </p>
 
 ## Running Locally
 
 ```bash
-git clone https://github.com/smartfoloo/lunarsync.git
-cd lunarsync
+git clone https://github.com/smartfoloo/DW.git
+cd DW
 npm install
 npm start
 ```
 
 ## Deployment
 
-[![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/smartfoloo/lunarsync)
-[![Deploy on Railway](https://binbashbanana.github.io/deploy-buttons/buttons/remade/railway.svg)](https://railway.app/new/template?template=https://github.com/smartfoloo/lunarsync)
-[![Deploy to Cyclic](https://binbashbanana.github.io/deploy-buttons/buttons/remade/cyclic.svg)](https://app.cyclic.sh/api/app/deploy/smartfoloo/lunarsync)
-[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/smartfoloo/lunarsync)
+[![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/smartfoloo/DW)
+[![Deploy on Railway](https://binbashbanana.github.io/deploy-buttons/buttons/remade/railway.svg)](https://railway.app/new/template?template=https://github.com/smartfoloo/DW)
+[![Deploy to Cyclic](https://binbashbanana.github.io/deploy-buttons/buttons/remade/cyclic.svg)](https://app.cyclic.sh/api/app/deploy/smartfoloo/DW)
+[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/smartfoloo/DW)
 
 ## FAQ
 
-#### I want to host a lunarsync domain!
+#### I want to host a DW domain!
 
 Check out the **Deployment** section in our [our discord server](https://discord.gg/sSWRxaHhvA).
 
