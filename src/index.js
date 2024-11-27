@@ -1,6 +1,7 @@
 const { createBareServer } = require("@tomphttp/bare-server-node");
 const express = require("express");
 const { createServer } = require("http");
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const { uvPath } = require("@titaniumnetwork-dev/ultraviolet");
 const { hostname } = require("os");
 const path = require("path");
